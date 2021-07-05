@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/realme/RMX1911
+DEVICE_PATH := device/realme/realme_trinket
 
 # Architecture
 TARGET_ARCH := arm64
@@ -63,7 +63,7 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 #TARGET_USE_SDCLANG := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := RMX1911
+TARGET_OTA_ASSERT_DEVICE := RMX1911,RMX1925,RMX1927,RMX2030
 
 # Avb
 BOARD_AVB_ENABLE := true
@@ -80,9 +80,9 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1452277760
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
-#Init
-# TARGET_INIT_VENDOR_LIB := libinit_realmex2
-# TARGET_RECOVERY_DEVICE_MODULES := libinit_realmex2
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_realme_trinket
+TARGET_RECOVERY_DEVICE_MODULES := libinit_realme_trinket
 
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
