@@ -41,6 +41,7 @@ TARGET_USES_UEFI := true
 # Platform
 TARGET_BOARD_PLATFORM := sm6125
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno610
+TARGET_SUPPORTS_64_BIT_APPS := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image earlycon=msm_geni_serial,0x880000 loop.max_part=7 cgroup.memory=nokmem,nosocket androidboot.selinux=permissive
@@ -67,7 +68,12 @@ TARGET_OTA_ASSERT_DEVICE := RMX1911,RMX1925,RMX1927,RMX2030
 
 # Avb
 BOARD_AVB_ENABLE := true
-BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -127,7 +133,7 @@ TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
 # TW_HAS_EDL_MODE := true
-TW_OZIP_DECRYPT_KEY := "1C4A11A3A22513AE541B53BB31513121"
+TW_OZIP_DECRYPT_KEY := 1C4A11A3A22513AE541B53BB31513121
 TW_SKIP_COMPATIBILITY_CHECK := true
 
 # Hack: prevent anti rollback

@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_realme_trinket.mk
+    $(LOCAL_DIR)/twrp_realme_trinket.mk
